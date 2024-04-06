@@ -12,14 +12,20 @@ router.get("/posts", feedController.getPosts);
 router.post(
   "/post",
   [
-    expValidator.body("title").trim().isLength({ min: 7 }),
+    expValidator.body("title").trim().isLength({ min: 5 }),
     expValidator.body("content").trim().isLength({ min: 5 }),
   ],
   feedController.createPost
 );
 
 router.get("/post/:postId", feedController.getPost);
-router.put("/post/:postId", feedController.getPost);
-
+router.put(
+  "/post/:postId",
+  [
+    expValidator.body("title").trim().isLength({ min: 5 }),
+    expValidator.body("content").trim().isLength({ min: 5 }),
+  ],
+  feedController.updatePost
+);
 
 module.exports = router;
