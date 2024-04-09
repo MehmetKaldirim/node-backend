@@ -5,7 +5,7 @@ const authController = require("../controllers/auth");
 
 const router = express.Router();
 
-const User = require("../models/user");
+const User = require("../models/user"); 
 
 router.put(
   "/signup",
@@ -34,5 +34,7 @@ router.put(
   ],
   authController.signup
 );
+
+router.post('/login', authController.login);
 
 module.exports = router;
